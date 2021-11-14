@@ -1,0 +1,40 @@
+
+.card-box {
+    border: 2px solid rgb(95, 95, 95);
+    padding: 30px;
+    box-shadow: 0px 0px 5px 0px #504f4f;
+    float: none;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.card-box .card-thumbnail {
+    overflow: hidden;
+    transition: 1s;
+    width: 60%;
+
+}
+.card-box .card-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+h1  a {
+    text-decoration: none;
+    color: #fff;
+}
+h3 {
+    text-decoration: none;
+    color: #fff;
+    justify-self: center;
+}
+.card-box h3  a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.btt-light{
+    background-color: #fff;
+}
+
+.btn-md{
+    margin: 30px 0 30px 0;
+}
