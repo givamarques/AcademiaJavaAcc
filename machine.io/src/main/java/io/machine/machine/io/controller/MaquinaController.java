@@ -42,7 +42,7 @@ public class MaquinaController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerMaquina(Long id){
+    public void removerMaquina(@PathVariable("id") Long id){
         maquinaService.buscarById(id)
                 .map(maquina -> {
                     maquinaService.removeById(maquina.getId());
