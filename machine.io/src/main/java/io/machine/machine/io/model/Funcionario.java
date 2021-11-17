@@ -33,4 +33,5 @@ public abstract class Funcionario implements Serializable {
     private String telefone;
 
 
+
 }

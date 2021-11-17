@@ -45,17 +45,17 @@ public class MaquinaController {
     public void removerMaquina(@PathVariable("id") Long id){
         maquinaService.buscarById(id)
                 .map(maquina -> {
-                    maquinaService.removeById(maquina.getId());
+                    maquinaService.removeById(maquina.getIdMaquina());
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
     }
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarMaquina(@PathVariable("id") Long id, Maquina maquina){
-        maquinaService.buscarById(id)
-                .map(maquinaBase -> {
-                    modelMapper.map(maquina, maquinaBase);
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));;
-    }
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void atualizarMaquina(@PathVariable("id") Long id, Maquina maquina){
+//        maquinaService.buscarById(id)
+//                .map(maquinaBase -> {
+//                    modelMapper.map(maquina, maquinaBase);
+//                    return Void.TYPE;
+//                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));;
+//    }
 }

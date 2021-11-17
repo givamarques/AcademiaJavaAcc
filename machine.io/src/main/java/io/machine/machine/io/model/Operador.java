@@ -20,7 +20,7 @@ public class Operador extends Funcionario {
 
     @Id
     @NotNull
-    @Column(name = "idOperador", unique = true)
+    @Column(name = "idOperador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOperador;
 

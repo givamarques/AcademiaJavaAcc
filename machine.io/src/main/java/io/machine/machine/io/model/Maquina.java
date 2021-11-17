@@ -21,7 +21,7 @@ public class Maquina {
     @NotNull
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMaquina;
 
     @NotNull
 //    DTA123456JBTNET
