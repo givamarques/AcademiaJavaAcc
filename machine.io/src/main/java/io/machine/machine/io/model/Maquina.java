@@ -24,27 +24,21 @@ public class Maquina {
     private Long id;
 
     @NotNull
-    @Column(name = "ativo", unique = true)
+//    DTA123456JBTNET
+    @Column(name = "ativo", unique = true, length = 15)
     private String ativo;
 
     @NotNull
-    @Column(name = "modelo")
+    @Column(name = "modelo", length = 50)
     private String modelo;
 
     @NotNull
-    @Column(name = "anydesk", unique = true)
+//    123456789
+    @Column(name = "anydesk", unique = true, length = 9)
     private String anydesk;
 
     @NotNull
     @Column(name = "status")
     private Boolean status;
-
-    @NotNull
-    @Column(name = "dataChegada")
-    private Date dataDeChegada;
-
-    @NotNull
-    @Column(name = "dataSaida")
-    private Date dataDeSaida;
 
 }

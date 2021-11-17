@@ -1,6 +1,10 @@
 package io.machine.machine.io.model;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +14,10 @@ import java.time.Instant;
 
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "chamado")
 public class Chamado {
 
@@ -18,33 +26,4 @@ public class Chamado {
     @Column(name = "IdChamado", unique = true)
     private Long id;
 
-    @NotNull
-    @Column(name = "dataDeAberturaDoChamado")
-    private Instant dataDeAberturaDoChamado;
-
-
-
-    public Chamado() {
-    }
-
-    public Chamado(Long id, Instant dataDeAberturaDoChamado) {
-        this.id = id;
-        this.dataDeAberturaDoChamado = dataDeAberturaDoChamado;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Instant getDataDeAberturaDoChamado() {
-        return dataDeAberturaDoChamado;
-    }
-
-    public void setDataDeAberturaDoChamado(Instant dataDeAberturaDoChamado) {
-        this.dataDeAberturaDoChamado = dataDeAberturaDoChamado;
-    }
 }
