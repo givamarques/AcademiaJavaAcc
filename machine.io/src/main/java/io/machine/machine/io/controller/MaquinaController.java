@@ -37,7 +37,7 @@ public class MaquinaController {
     @ResponseStatus(HttpStatus.OK)
     public Maquina maquinaPorId(@PathVariable("id") Long id){
         return maquinaService.buscarById(id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado"));
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
     }
 
     @DeleteMapping(value = "/{id}")
@@ -47,7 +47,7 @@ public class MaquinaController {
                 .map(maquina -> {
                     maquinaService.removeById(maquina.getId());
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado"));
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
     }
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -56,6 +56,6 @@ public class MaquinaController {
                 .map(maquinaBase -> {
                     modelMapper.map(maquina, maquinaBase);
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Cliente não encontrado"));;
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));;
     }
 }
