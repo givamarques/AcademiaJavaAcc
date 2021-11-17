@@ -1,19 +1,20 @@
 package io.machine.machine.io.model;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @MappedSuperclass
 public abstract class Funcionario implements Serializable {
-
-    @Id
-    @NotNull
-    @Column(name = "idFuncionario", unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idFuncionario;
 
     @NotNull
     @Column(name = "matricula", unique = true)
@@ -31,54 +32,5 @@ public abstract class Funcionario implements Serializable {
     @Column(name = "telefone")
     private String telefone;
 
-    public Funcionario() {
-    }
 
-    public Funcionario(Long idFuncionario, String matricula, String nomeCompleto, String operacao, String telefone) {
-        this.idFuncionario = idFuncionario;
-        this.matricula = matricula;
-        this.nomeCompleto = nomeCompleto;
-        this.operacao = operacao;
-        this.telefone = telefone;
-    }
-
-    public Long getId() {
-        return idFuncionario;
-    }
-
-    public void setId(Long id) {
-        this.idFuncionario = id;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public String getOperacao() {
-        return operacao;
-    }
-
-    public void setOperacao(String operacao) {
-        this.operacao = operacao;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 }

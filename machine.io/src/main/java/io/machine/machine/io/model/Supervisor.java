@@ -17,6 +17,12 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="idFuncionario")
 public class Supervisor extends Funcionario {
 
+    @Id
+    @NotNull
+    @Column(name = "idSupervisor", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idSupervisor;
+
     @NotNull
     @Column(name = "ramal" ,unique = false, length = 6)
     private String ramal;

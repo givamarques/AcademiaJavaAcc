@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 
 
@@ -24,6 +21,15 @@ public class Chamado {
     @Id
     @NotNull
     @Column(name = "IdChamado", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "dataDeAberturaChamado")
+    private Instant dataDeAberturaChamado;
+
+    @NotNull
+    @Column(name = "dataDeFechamentoChamado")
+    private Instant dataDeFechamentoChamado;
+
 
 }
