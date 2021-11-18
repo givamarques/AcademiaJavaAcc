@@ -1,4 +1,4 @@
-package io.machine.machine.io.model;
+package io.machine.machine.io.models;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

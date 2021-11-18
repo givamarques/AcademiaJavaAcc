@@ -1,9 +1,8 @@
-package io.machine.machine.io.controller;
+package io.machine.machine.io.controllers;
 
 
-import io.machine.machine.io.model.Maquina;
-import io.machine.machine.io.service.MaquinaService;
-import io.machine.machine.io.service.OperadorService;
+import io.machine.machine.io.models.Maquina;
+import io.machine.machine.io.services.MaquinaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,14 +35,14 @@ public class MaquinaController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Maquina maquinaPorId(@PathVariable("id") Long id){
-        return maquinaService.buscarById(id).
+        return maquinaService.findById(id).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removerMaquina(@PathVariable("id") Long id){
-        maquinaService.buscarById(id)
+        maquinaService.findById(id)
                 .map(maquina -> {
                     maquinaService.removeById(maquina.getIdMaquina());
                     return Void.TYPE;

@@ -1,4 +1,4 @@
-package io.machine.machine.io.model;
+package io.machine.machine.io.models;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class Chamado {
     @NotNull
     @Column(name = "IdChamado", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idChamado;
 
     @Column(name = "dataDeAberturaChamado")
     private Instant dataDeAberturaChamado;

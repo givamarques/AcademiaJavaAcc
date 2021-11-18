@@ -1,7 +1,6 @@
-package io.machine.machine.io.model;
+package io.machine.machine.io.models;
 
 import com.sun.istack.NotNull;
-import io.machine.machine.io.model.Funcionario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,18 +13,18 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "operador")
+@Table(name = "supervisor")
 @PrimaryKeyJoinColumn(name="idFuncionario")
-public class Operador extends Funcionario {
+public class Supervisor extends Funcionario {
 
     @Id
     @NotNull
-    @Column(name = "idOperador")
+    @Column(name = "idSupervisor", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idOperador;
+    private Long idSupervisor;
 
     @NotNull
-    @Column(name = "cpf",unique = true, length = 11)
-    private String cpf;
+    @Column(name = "ramal" ,unique = false, length = 6)
+    private String ramal;
 
 }

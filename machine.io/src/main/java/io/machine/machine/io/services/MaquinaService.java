@@ -1,10 +1,10 @@
-package io.machine.machine.io.service;
+package io.machine.machine.io.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import io.machine.machine.io.model.Maquina;
-import io.machine.machine.io.repository.MaquinaRepository;
+import io.machine.machine.io.models.Maquina;
+import io.machine.machine.io.repositories.MaquinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class MaquinaService {
         return maquinaRepository.findAll();
     }
 
-    public Optional<Maquina> buscarById(Long id){
+    public Optional<Maquina> findById(Long id){
         return maquinaRepository.findById(id);
     }
 

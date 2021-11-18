@@ -1,4 +1,4 @@
-package io.machine.machine.io.model.enums;
+package io.machine.machine.io.models.enums;
 
 public enum ChamadoStatus {
     RECEBIDO,

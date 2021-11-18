@@ -1,8 +1,7 @@
-package io.machine.machine.io.controller;
+package io.machine.machine.io.controllers;
 
-import io.machine.machine.io.model.Operador;
-import io.machine.machine.io.model.Supervisor;
-import io.machine.machine.io.service.SupervisorService;
+import io.machine.machine.io.models.Supervisor;
+import io.machine.machine.io.services.SupervisorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
