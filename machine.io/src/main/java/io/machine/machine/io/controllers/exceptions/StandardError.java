@@ -12,18 +12,16 @@ import java.time.Instant;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class StandardError implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Instant timestamp;
-    private Instant status;
+    private Integer status;
     private String error;
     private String message;
     private String path;
 
-    public StandardError(Instant now, int value, String error, String message, String requestURI) {
-        super();
+    public StandardError(Instant timestamp, Integer status, String error, String message, String path) {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;

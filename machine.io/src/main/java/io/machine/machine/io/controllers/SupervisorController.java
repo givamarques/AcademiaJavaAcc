@@ -1,12 +1,13 @@
 package io.machine.machine.io.controllers;
 
+import io.machine.machine.io.models.Operador;
 import io.machine.machine.io.models.Supervisor;
 import io.machine.machine.io.services.SupervisorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class SupervisorController {
 
     @Autowired
     private SupervisorService supervisorService;
-    private ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -26,24 +26,27 @@ public class SupervisorController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Supervisor> SupervisorList(){
+    public List<Supervisor> operadorList(){
         return supervisorService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Supervisor SupervisorById(@PathVariable("id") Long id){
-        return supervisorService.buscarById(id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Supervisor não encontrada"));
+    public Supervisor operadorPorId(@PathVariable("id") Long id){
+        return supervisorService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerSupervisor(@PathVariable("id") Long id){
-        supervisorService.buscarById(id)
-                .map(supervisor -> {
-                    supervisorService.removeById(supervisor.getIdSupervisor());
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
+    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
+        supervisorService.removeById(id);
+        return ResponseEntity.noContent().build();
     }
+
+//    @DeleteMapping(value = "/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public ResponseEntity<Object> removerSupervisor(@PathVariable("id") Long id){
+//        supervisorService.removeById(id);
+//        return ResponseEntity.noContent().build();
+//    }
 }

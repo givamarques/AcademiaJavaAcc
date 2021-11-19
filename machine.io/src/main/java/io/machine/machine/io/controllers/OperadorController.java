@@ -1,12 +1,13 @@
 package io.machine.machine.io.controllers;
 
+import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.models.Operador;
 import io.machine.machine.io.services.OperadorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class OperadorController {
 
     @Autowired
     private OperadorService operadorService;
-    private ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -26,24 +26,27 @@ public class OperadorController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Operador> MaquinaList(){
+    public List<Operador> operadorList(){
         return operadorService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Operador operadorPorId(@PathVariable("id") Long id){
-        return operadorService.buscarById(id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
+        return operadorService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerOperador(@PathVariable("id") Long id){
-        operadorService.buscarById(id)
-                .map(operador -> {
-                    operadorService.removeById(operador.getIdOperador());
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
+    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
+        operadorService.removeById(id);
+        return ResponseEntity.noContent().build();
     }
+
+//    @DeleteMapping(value = "/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
+//        operadorService.removeById(id);
+//        return ResponseEntity.noContent().build();
+//    }
 }

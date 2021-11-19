@@ -6,8 +6,8 @@ import io.machine.machine.io.services.MaquinaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -17,8 +17,6 @@ public class MaquinaController {
 
     @Autowired
     private MaquinaService maquinaService;
-
-    private ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,26 +33,20 @@ public class MaquinaController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Maquina maquinaPorId(@PathVariable("id") Long id){
-        return maquinaService.findById(id).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
+        return maquinaService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerMaquina(@PathVariable("id") Long id){
-        maquinaService.findById(id)
-                .map(maquina -> {
-                    maquinaService.removeById(maquina.getIdMaquina());
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));
+    public ResponseEntity<Object> removerMaquina(@PathVariable("id") Long id){
+        maquinaService.removeById(id);
+        return ResponseEntity.noContent().build();
     }
-//    @PutMapping("/{id}")
+    
+//    @PutMapping(value = "/{id}")
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void atualizarMaquina(@PathVariable("id") Long id, Maquina maquina){
-//        maquinaService.buscarById(id)
-//                .map(maquinaBase -> {
-//                    modelMapper.map(maquina, maquinaBase);
-//                    return Void.TYPE;
-//                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Maquina não encontrada"));;
+//    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
+//        obj = maquinaService.update(id, obj);
+//        return ResponseEntity.ok().body(obj);
 //    }
 }

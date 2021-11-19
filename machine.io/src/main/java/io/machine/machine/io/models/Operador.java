@@ -18,12 +18,10 @@ import javax.persistence.*;
 public class Operador extends Funcionario {
 
     @Id
-    @NotNull
     @Column(name = "idOperador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOperador;
 
-    @NotNull
     @Column(name = "cpf",unique = true, length = 11)
     private String cpf;
 
