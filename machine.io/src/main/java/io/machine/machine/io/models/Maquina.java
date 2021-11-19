@@ -1,4 +1,4 @@
-package io.machine.machine.io.model;
+package io.machine.machine.io.models;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
 
 @Entity
 @Getter
@@ -15,36 +15,26 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "maquina")
-public class Maquina {
+public class Maquina implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMaquina;
 
-    @NotNull
-    @Column(name = "ativo", unique = true)
+//    DTA123456JBTNET
+    @Column(name = "ativo", unique = true, length = 15)
     private String ativo;
 
-    @NotNull
-    @Column(name = "modelo")
+    @Column(name = "modelo", length = 50)
     private String modelo;
 
-    @NotNull
-    @Column(name = "anydesk", unique = true)
+//    123456789
+    @Column(name = "anydesk", unique = true, length = 9)
     private String anydesk;
 
-    @NotNull
     @Column(name = "status")
     private Boolean status;
-
-    @NotNull
-    @Column(name = "dataChegada")
-    private Date dataDeChegada;
-
-    @NotNull
-    @Column(name = "dataSaida")
-    private Date dataDeSaida;
 
 }
