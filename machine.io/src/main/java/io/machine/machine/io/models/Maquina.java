@@ -18,6 +18,11 @@ import java.io.Serializable;
 public class Maquina implements Serializable {
     private static final long serialVersionUID = 1L;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idChamado", referencedColumnName = "id")
+    private Chamado chamado;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

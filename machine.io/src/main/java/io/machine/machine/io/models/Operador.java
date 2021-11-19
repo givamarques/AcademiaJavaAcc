@@ -17,8 +17,20 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="idFuncionario")
 public class Operador extends Funcionario {
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idChamado", referencedColumnName = "id")
+    private Chamado chamado;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idMaquina", referencedColumnName = "id")
+    private Maquina maquina;
+
+    @ManyToOne
+    @JoinColumn(name = "supervisor_id")
+    private Supervisor supervisorOperador;
+
     @Id
-    @Column(name = "idOperador")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idOperador;
 

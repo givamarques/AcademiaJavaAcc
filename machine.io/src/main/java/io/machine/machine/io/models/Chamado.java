@@ -18,9 +18,20 @@ import java.time.Instant;
 @Table(name = "chamado")
 public class Chamado {
 
+    @ManyToOne
+    @JoinColumn(name = "idSupervisor")
+    private Supervisor supervisorChamado;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idMaquina", referencedColumnName = "id")
+    private Maquina maquina;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idOperadr", referencedColumnName = "id")
+    private Operador operador;
+
     @Id
-    @NotNull
-    @Column(name = "IdChamado", unique = true)
+    @Column(name = "Id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChamado;
 
