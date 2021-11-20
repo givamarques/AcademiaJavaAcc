@@ -17,17 +17,14 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="idFuncionario")
 public class Operador extends Funcionario {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idChamado", referencedColumnName = "id")
-    private Chamado chamado;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "operador")
     @JoinColumn(name = "idMaquina", referencedColumnName = "id")
     private Maquina maquina;
 
     @ManyToOne
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisorOperador;
+//------------------------------------------------------------
 
     @Id
     @Column(name = "id")
@@ -37,4 +34,12 @@ public class Operador extends Funcionario {
     @Column(name = "cpf",unique = true, length = 11)
     private String cpf;
 
+//-----------------------------------------------------------
+
+    public Operador(String matricula, String nomeCompleto, String operacao, String telefone, Maquina maquina, Supervisor supervisorOperador, String cpf) {
+        super(matricula, nomeCompleto, operacao, telefone);
+        this.maquina = maquina;
+        this.supervisorOperador = supervisorOperador;
+        this.cpf = cpf;
+    }
 }

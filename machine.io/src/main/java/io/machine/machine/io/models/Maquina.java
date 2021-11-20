@@ -18,10 +18,15 @@ import java.io.Serializable;
 public class Maquina implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idOperador", referencedColumnName = "id")
+    private Operador operador;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idChamado", referencedColumnName = "id")
     private Chamado chamado;
+
+    //------------------------------------------------------------
 
     @Id
     @Column(name = "id")
@@ -35,11 +40,19 @@ public class Maquina implements Serializable {
     @Column(name = "modelo", length = 50)
     private String modelo;
 
-//    123456789
-    @Column(name = "anydesk", unique = true, length = 9)
+//    123 456 789
+    @Column(name = "anydesk", unique = true, length = 11)
     private String anydesk;
 
     @Column(name = "status")
     private Boolean status;
 
+    //------------------------------------------------------------
+
+    public Maquina(String ativo, String modelo, String anydesk, Boolean status) {
+        this.ativo = ativo;
+        this.modelo = modelo;
+        this.anydesk = anydesk;
+        this.status = status;
+    }
 }

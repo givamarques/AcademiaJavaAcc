@@ -22,13 +22,10 @@ public class Chamado {
     @JoinColumn(name = "idSupervisor")
     private Supervisor supervisorChamado;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "chamado")
     @JoinColumn(name = "idMaquina", referencedColumnName = "id")
     private Maquina maquina;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idOperadr", referencedColumnName = "id")
-    private Operador operador;
+    //------------------------------------------------------------
 
     @Id
     @Column(name = "Id", unique = true)
@@ -41,6 +38,24 @@ public class Chamado {
     @NotNull
     @Column(name = "dataDeFechamentoChamado")
     private Instant dataDeFechamentoChamado;
+    //------------------------------------------------------------
 
+    public Chamado(Supervisor supervisorChamado, Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.supervisorChamado = supervisorChamado;
+        this.maquina = maquina;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
 
+    public Chamado(Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.maquina = maquina;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
+
+    public Chamado(Supervisor supervisorChamado, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.supervisorChamado = supervisorChamado;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
 }

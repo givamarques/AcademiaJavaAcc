@@ -34,4 +34,8 @@ public class Supervisor extends Funcionario {
     @Column(name = "ramal" ,unique = false, length = 6)
     private String ramal;
 
+    public Supervisor(String matricula, String nomeCompleto, String operacao, String telefone, String ramal) {
+        super(matricula, nomeCompleto, operacao, telefone);
+        this.ramal = ramal;
+    }
 }
