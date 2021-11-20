@@ -20,13 +20,13 @@ public class OperadorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Operador salvar(@RequestBody Operador operador){
+    public Operador salvarOperador(@RequestBody Operador operador){
         return operadorService.save(operador);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Operador> operadorList(){
+    public List<Operador> listarOperadores(){
         return operadorService.findAll();
     }
 
@@ -38,7 +38,7 @@ public class OperadorController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
+    public ResponseEntity<Object> removerOperadorPorId(@PathVariable("id") Long id){
         operadorService.removeById(id);
         return ResponseEntity.noContent().build();
     }
