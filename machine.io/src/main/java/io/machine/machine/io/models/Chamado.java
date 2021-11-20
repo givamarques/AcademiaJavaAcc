@@ -18,9 +18,17 @@ import java.time.Instant;
 @Table(name = "chamado")
 public class Chamado {
 
+    @ManyToOne
+    @JoinColumn(name = "idSupervisor")
+    private Supervisor supervisorChamado;
+
+    @OneToOne(mappedBy = "chamado")
+    @JoinColumn(name = "idMaquina", referencedColumnName = "id")
+    private Maquina maquina;
+    //------------------------------------------------------------
+
     @Id
-    @NotNull
-    @Column(name = "IdChamado", unique = true)
+    @Column(name = "Id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idChamado;
 
@@ -30,6 +38,24 @@ public class Chamado {
     @NotNull
     @Column(name = "dataDeFechamentoChamado")
     private Instant dataDeFechamentoChamado;
+    //------------------------------------------------------------
 
+    public Chamado(Supervisor supervisorChamado, Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.supervisorChamado = supervisorChamado;
+        this.maquina = maquina;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
 
+    public Chamado(Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.maquina = maquina;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
+
+    public Chamado(Supervisor supervisorChamado, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+        this.supervisorChamado = supervisorChamado;
+        this.dataDeAberturaChamado = dataDeAberturaChamado;
+        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
 }

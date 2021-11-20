@@ -1,9 +1,10 @@
 package io.machine.machine.io.controllers;
 
 
+import io.machine.machine.io.models.Chamado;
 import io.machine.machine.io.models.Maquina;
+import io.machine.machine.io.services.ChamadoService;
 import io.machine.machine.io.services.MaquinaService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,34 +13,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/maquinas")
-public class MaquinaController {
+@RequestMapping(value = "/chamado")
+public class ChamadoController {
 
     @Autowired
-    private MaquinaService maquinaService;
+    private ChamadoService chamadoService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Maquina salvarMaquina(@RequestBody Maquina maquina){
-        return maquinaService.save(maquina);
+    public Chamado salvarChamado(@RequestBody Chamado chamado){
+        return chamadoService.save(chamado);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Maquina> listarMaquinas(){
-        return maquinaService.findAll();
+    public List<Chamado> listarChamados(){
+        return chamadoService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Maquina listarMaquinasPorId(@PathVariable("id") Long id){
-        return maquinaService.findById(id);
+    public Chamado chamadoPorId(@PathVariable("id") Long id){
+        return chamadoService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Object> removerMaquinasPorId(@PathVariable("id") Long id){
-        maquinaService.removeById(id);
+    public ResponseEntity<Object> removerChamadoPorId(@PathVariable("id") Long id){
+        chamadoService.removeById(id);
         return ResponseEntity.noContent().build();
     }
     

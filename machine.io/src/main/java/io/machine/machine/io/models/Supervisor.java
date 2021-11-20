@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,9 +18,15 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="idFuncionario")
 public class Supervisor extends Funcionario {
 
+    @OneToMany(mappedBy = "supervisorChamado")
+    private List<Chamado> chamadoList;
+
+    @OneToMany(mappedBy = "supervisorOperador")
+    private List<Operador> operadorList;
+
+
     @Id
-    @NotNull
-    @Column(name = "idSupervisor", unique = true)
+    @Column(name = "id", unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSupervisor;
 
@@ -27,4 +34,8 @@ public class Supervisor extends Funcionario {
     @Column(name = "ramal" ,unique = false, length = 6)
     private String ramal;
 
+    public Supervisor(String matricula, String nomeCompleto, String operacao, String telefone, String ramal) {
+        super(matricula, nomeCompleto, operacao, telefone);
+        this.ramal = ramal;
+    }
 }

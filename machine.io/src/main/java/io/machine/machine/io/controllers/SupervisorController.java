@@ -20,25 +20,25 @@ public class SupervisorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Supervisor salvar(@RequestBody Supervisor supervisor){
+    public Supervisor salvarSupervisor(@RequestBody Supervisor supervisor){
         return supervisorService.save(supervisor);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Supervisor> operadorList(){
+    public List<Supervisor> listarSupervisor(){
         return supervisorService.findAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Supervisor operadorPorId(@PathVariable("id") Long id){
+    public Supervisor listarSupervisorPorId(@PathVariable("id") Long id){
         return supervisorService.findById(id);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
+    public ResponseEntity<Object> removerOperadorPorId(@PathVariable("id") Long id){
         supervisorService.removeById(id);
         return ResponseEntity.noContent().build();
     }
