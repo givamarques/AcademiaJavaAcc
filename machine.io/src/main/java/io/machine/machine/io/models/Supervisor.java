@@ -19,10 +19,10 @@ import java.util.List;
 public class Supervisor extends Funcionario {
 
     @OneToMany(mappedBy = "supervisorChamado")
-    private List<Chamado> chamadoList;
+    private List<Chamado> listarChamados;
 
     @OneToMany(mappedBy = "supervisorOperador")
-    private List<Operador> operadorList;
+    private List<Operador> listarOperadores;
 
 
     @Id

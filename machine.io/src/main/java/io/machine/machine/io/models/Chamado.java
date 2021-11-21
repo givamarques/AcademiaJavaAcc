@@ -1,6 +1,7 @@
 package io.machine.machine.io.models;
 
 import com.sun.istack.NotNull;
+import io.machine.machine.io.models.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Chamado {
     @OneToOne(mappedBy = "chamado")
     @JoinColumn(name = "idMaquina", referencedColumnName = "id")
     private Maquina maquina;
+
     //------------------------------------------------------------
 
     @Id
@@ -40,21 +42,10 @@ public class Chamado {
     private Instant dataDeFechamentoChamado;
     //------------------------------------------------------------
 
+
     public Chamado(Supervisor supervisorChamado, Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
         this.supervisorChamado = supervisorChamado;
         this.maquina = maquina;
-        this.dataDeAberturaChamado = dataDeAberturaChamado;
-        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
-    }
-
-    public Chamado(Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
-        this.maquina = maquina;
-        this.dataDeAberturaChamado = dataDeAberturaChamado;
-        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
-    }
-
-    public Chamado(Supervisor supervisorChamado, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
-        this.supervisorChamado = supervisorChamado;
         this.dataDeAberturaChamado = dataDeAberturaChamado;
         this.dataDeFechamentoChamado = dataDeFechamentoChamado;
     }
