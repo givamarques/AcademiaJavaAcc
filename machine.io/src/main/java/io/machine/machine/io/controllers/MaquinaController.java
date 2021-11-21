@@ -3,7 +3,6 @@ package io.machine.machine.io.controllers;
 
 import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.services.MaquinaService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +42,10 @@ public class MaquinaController {
         return ResponseEntity.noContent().build();
     }
     
-//    @PutMapping(value = "/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
-//        obj = maquinaService.update(id, obj);
-//        return ResponseEntity.ok().body(obj);
-//    }
+    @PutMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
+        obj = maquinaService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }

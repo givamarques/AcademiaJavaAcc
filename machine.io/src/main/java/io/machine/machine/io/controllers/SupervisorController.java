@@ -1,9 +1,8 @@
 package io.machine.machine.io.controllers;
 
-import io.machine.machine.io.models.Operador;
+import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.models.Supervisor;
 import io.machine.machine.io.services.SupervisorService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +42,11 @@ public class SupervisorController {
         return ResponseEntity.noContent().build();
     }
 
-//    @DeleteMapping(value = "/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity<Object> removerSupervisor(@PathVariable("id") Long id){
-//        supervisorService.removeById(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PutMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Supervisor> update(@PathVariable("id") Long id, @RequestBody Supervisor obj){
+        obj = supervisorService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
+
 }

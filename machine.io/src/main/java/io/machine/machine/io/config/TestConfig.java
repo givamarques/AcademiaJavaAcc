@@ -56,14 +56,14 @@ public class TestConfig implements CommandLineRunner {
                 s1,
                 "12345678985");
 //
-        Chamado c1 = new Chamado(s1,m1, Instant.now(),null);
+        Chamado c1 = new Chamado(s1,m1,Status.RECEBIDO, Instant.now());
 //
 //
         maquinaRepository.saveAll(Arrays.asList(m1,m2,m3,m4));
         modeloRepository.saveAll(Arrays.asList(md1,md2));
         supervisorRepository.save(s1);
         operadorRepository.save(o1);
-//        chamadoRepository.save(c1);
+        chamadoRepository.save(c1);
 
     }
 }

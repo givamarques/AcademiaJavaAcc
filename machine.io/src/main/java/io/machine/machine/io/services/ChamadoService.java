@@ -40,18 +40,18 @@ public class ChamadoService {
         }
     }
 
-//    public Maquina update(Long id, Maquina obj){
-//        Maquina entity = maquinaRepository.getById(id);
-//        updateData(entity, obj);
-//        return maquinaRepository.save(entity);
-//    }
-//
-//    private void updateData(Maquina entity, Maquina obj) {
-//        entity.setAnydesk(obj.getAnydesk());
-//        entity.setAtivo(obj.getAtivo());
-//        entity.setModelo(obj.getModelo());
-//        entity.setStatus(obj.getStatus());
-//    }
+    public Chamado update(Long id, Chamado obj){
+        Chamado entity = chamadoRepository.getById(id);
+        updateData(entity, obj);
+        return chamadoRepository.save(entity);
+    }
+
+    private void updateData(Chamado entity, Chamado obj) {
+        entity.setMaquina(obj.getMaquina());
+        entity.setDataDeAberturaChamado(obj.getDataDeAberturaChamado());
+        entity.setDataDeFechamentoChamado(obj.getDataDeFechamentoChamado());
+        entity.setStatus(obj.getStatus());
+    }
 
 
 }

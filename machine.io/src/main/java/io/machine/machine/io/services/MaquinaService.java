@@ -40,18 +40,18 @@ public class MaquinaService {
         }
     }
 
-//    public Maquina update(Long id, Maquina obj){
-//        Maquina entity = maquinaRepository.getById(id);
-//        updateData(entity, obj);
-//        return maquinaRepository.save(entity);
-//    }
-//
-//    private void updateData(Maquina entity, Maquina obj) {
-//        entity.setAnydesk(obj.getAnydesk());
-//        entity.setAtivo(obj.getAtivo());
-//        entity.setModelo(obj.getModelo());
-//        entity.setStatus(obj.getStatus());
-//    }
+    public Maquina update(Long id, Maquina obj){
+        Maquina entity = maquinaRepository.getById(id);
+        updateData(entity, obj);
+        return maquinaRepository.save(entity);
+    }
+
+    private void updateData(Maquina entity, Maquina obj) {
+        entity.setAnydesk(obj.getAnydesk());
+        entity.setAtivo(obj.getAtivo());
+        entity.setModelo(obj.getModelo());
+        entity.setStatus(obj.getStatus());
+    }
 
 
 }
