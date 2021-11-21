@@ -27,6 +27,9 @@ public class Chamado {
     @JoinColumn(name = "idMaquina", referencedColumnName = "id")
     private Maquina maquina;
 
+
+    private Integer status;
+
     //------------------------------------------------------------
 
     @Id
@@ -43,10 +46,20 @@ public class Chamado {
     //------------------------------------------------------------
 
 
-    public Chamado(Supervisor supervisorChamado, Maquina maquina, Instant dataDeAberturaChamado, Instant dataDeFechamentoChamado) {
+    public Chamado(Supervisor supervisorChamado, Maquina maquina, Status status, Instant dataDeAberturaChamado) {
         this.supervisorChamado = supervisorChamado;
         this.maquina = maquina;
+        setStatus(status);
         this.dataDeAberturaChamado = dataDeAberturaChamado;
-        this.dataDeFechamentoChamado = dataDeFechamentoChamado;
+    }
+
+    public Status getStatus() {
+        return Status.valueOf(status);
+    }
+
+    public void setStatus(Status status) {
+        if (status != null){
+            this.status = status.getCode();
+        }
     }
 }

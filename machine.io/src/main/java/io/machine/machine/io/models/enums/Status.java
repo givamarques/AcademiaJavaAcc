@@ -1,8 +1,6 @@
 package io.machine.machine.io.models.enums;
 
-import io.machine.machine.io.models.Chamado;
 import lombok.Getter;
-
 
 @Getter
 public enum Status {
