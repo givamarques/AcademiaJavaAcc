@@ -1,5 +1,7 @@
 package io.machine.machine.io.controllers;
 
+import io.machine.machine.io.models.Maquina;
+import io.machine.machine.io.models.Modelo;
 import io.machine.machine.io.models.Operador;
 import io.machine.machine.io.services.OperadorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +43,10 @@ public class OperadorController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @PutMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Operador> update(@PathVariable("id") Long id, @RequestBody Operador obj){
+        obj = operadorService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }

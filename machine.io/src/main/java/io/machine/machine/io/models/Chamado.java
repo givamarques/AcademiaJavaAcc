@@ -40,7 +40,6 @@ public class Chamado {
     @Column(name = "dataDeAberturaChamado")
     private Instant dataDeAberturaChamado;
 
-    @NotNull
     @Column(name = "dataDeFechamentoChamado")
     private Instant dataDeFechamentoChamado;
     //------------------------------------------------------------

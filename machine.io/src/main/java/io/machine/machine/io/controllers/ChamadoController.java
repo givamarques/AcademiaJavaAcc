@@ -2,6 +2,7 @@ package io.machine.machine.io.controllers;
 
 
 import io.machine.machine.io.models.Chamado;
+import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.services.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,11 +42,12 @@ public class ChamadoController {
         chamadoService.removeById(id);
         return ResponseEntity.noContent().build();
     }
-    
-//    @PutMapping(value = "/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
-//        obj = maquinaService.update(id, obj);
-//        return ResponseEntity.ok().body(obj);
-//    }
+
+    @PutMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Chamado> update(@PathVariable("id") Long id, @RequestBody Chamado obj){
+        obj = chamadoService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
+
 }

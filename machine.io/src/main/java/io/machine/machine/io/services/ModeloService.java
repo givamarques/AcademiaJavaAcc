@@ -2,6 +2,7 @@ package io.machine.machine.io.services;
 
 import io.machine.machine.io.customExceptions.ResourceNotFoundException;
 import io.machine.machine.io.models.Chamado;
+import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.models.Modelo;
 import io.machine.machine.io.repositories.ChamadoRepository;
 import io.machine.machine.io.repositories.ModeloRepository;
@@ -41,18 +42,15 @@ public class ModeloService {
         }
     }
 
-//    public Maquina update(Long id, Maquina obj){
-//        Maquina entity = maquinaRepository.getById(id);
-//        updateData(entity, obj);
-//        return maquinaRepository.save(entity);
-//    }
-//
-//    private void updateData(Maquina entity, Maquina obj) {
-//        entity.setAnydesk(obj.getAnydesk());
-//        entity.setAtivo(obj.getAtivo());
-//        entity.setModelo(obj.getModelo());
-//        entity.setStatus(obj.getStatus());
-//    }
+    public Modelo update(Long id, Modelo obj){
+        Modelo entity = modeloRepository.getById(id);
+        updateData(entity, obj);
+        return modeloRepository.save(entity);
+    }
+
+    private void updateData(Modelo entity, Modelo obj) {
+        entity.setModelo(obj.getModelo());
+    }
 
 
 }

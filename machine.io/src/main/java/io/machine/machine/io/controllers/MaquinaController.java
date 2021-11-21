@@ -42,10 +42,10 @@ public class MaquinaController {
         return ResponseEntity.noContent().build();
     }
     
-//    @PutMapping(value = "/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
-//        obj = maquinaService.update(id, obj);
-//        return ResponseEntity.ok().body(obj);
-//    }
+    @PutMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Maquina> update(@PathVariable("id") Long id, @RequestBody Maquina obj){
+        obj = maquinaService.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }
