@@ -8,23 +8,22 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "maquina")
 public class Maquina implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idOperador", referencedColumnName = "id")
-    private Operador operador;
-
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idChamado", referencedColumnName = "id")
     private Chamado chamado;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Modelo modelo;
 
     //------------------------------------------------------------
 
@@ -37,9 +36,6 @@ public class Maquina implements Serializable {
     @Column(name = "ativo", unique = true, length = 15)
     private String ativo;
 
-    @Column(name = "modelo", length = 50)
-    private String modelo;
-
 //    123 456 789
     @Column(name = "anydesk", unique = true, length = 11)
     private String anydesk;
@@ -49,9 +45,9 @@ public class Maquina implements Serializable {
 
     //------------------------------------------------------------
 
-    public Maquina(String ativo, String modelo, String anydesk, Boolean status) {
-        this.ativo = ativo;
+    public Maquina(Modelo modelo, String ativo, String anydesk, Boolean status) {
         this.modelo = modelo;
+        this.ativo = ativo;
         this.anydesk = anydesk;
         this.status = status;
     }
