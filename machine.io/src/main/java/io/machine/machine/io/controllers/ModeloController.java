@@ -1,9 +1,6 @@
 package io.machine.machine.io.controllers;
 
-
-import io.machine.machine.io.models.Chamado;
 import io.machine.machine.io.models.Modelo;
-import io.machine.machine.io.services.ChamadoService;
 import io.machine.machine.io.services.ModeloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

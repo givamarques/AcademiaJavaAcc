@@ -3,7 +3,6 @@ package io.machine.machine.io.controllers;
 
 import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.services.MaquinaService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

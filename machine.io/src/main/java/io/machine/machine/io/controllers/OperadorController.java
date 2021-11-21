@@ -1,9 +1,7 @@
 package io.machine.machine.io.controllers;
 
-import io.machine.machine.io.models.Maquina;
 import io.machine.machine.io.models.Operador;
 import io.machine.machine.io.services.OperadorService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +41,5 @@ public class OperadorController {
         return ResponseEntity.noContent().build();
     }
 
-//    @DeleteMapping(value = "/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity<Object> removerOperador(@PathVariable("id") Long id){
-//        operadorService.removeById(id);
-//        return ResponseEntity.noContent().build();
-//    }
+
 }
